@@ -784,7 +784,7 @@
         const mxPlayerIntent = `intent:${player.mediaUrl}#Intent;package=com.mxtech.videoplayer.ad;scheme=http;end`;
         
         // Try to open MX Player
-        window.location.href = mxPlayerIntent;
+        window.location.href = mxUrl;
         
         // Fallback after delay
         setTimeout(function() {
@@ -874,7 +874,7 @@
         const kmPlayerUrl = `kmplayer://${player.mediaUrl}`;
         
         // Try to open KMPlayer
-        window.location.href = kmPlayerUrl;
+        window.location.href = kmpUrl;
         
         // Fallback after delay
         setTimeout(function() {
