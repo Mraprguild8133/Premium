@@ -780,22 +780,19 @@
       }
       
       try {
-        // MX Player intent URL format for Android
-        const mxPlayerIntent = `intent:${player.mediaUrl}#Intent;package=com.mxtech.videoplayer.ad;scheme=http;end`;
-        
-        // Try to open MX Player
-        window.location.href = mxUrl;
-        
-        // Fallback after delay
-        setTimeout(function() {
-          if (!document.hidden) {
-            showNotification('MX Player not found. Please install MX Player from Play Store.', 'error');
-            // Offer alternative
-            if (confirm('MX Player not found. Would you like to install it?')) {
-              window.open('https://play.google.com/store/apps/details?id=com.mxtech.videoplayer.ad', '_blank');
-            }
-          }
-        }, 1000);
+        Open in MX Player
+    function openInMXPlayer(url) {
+      // MX Player uses a custom intent system
+      const mxUrl = `intent:${url}#Intent;package=com.mxtech.videoplayer.ad;S.title=Cloud%20Player;end`;
+      window.location.href = mxUrl;
+      
+      // Fallback in case MX Player is not installed
+      setTimeout(function() {
+        if (!document.webkitHidden && !document.hidden) {
+          alert('MX Player not found. Please install MX Player or try another player.');
+        }
+      }, 1000);
+    }
         
       } catch (error) {
         console.error('Error opening MX Player:', error);
